@@ -1,0 +1,9 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <main class="container center">
+        <h2><img src="{{ url_for('static', filename='logo.png') }}" /> {{ code }}: {{ name }}</h2>
+        <p class="error bg">{{ description }}</p>
+        <a href="{{ url_for('index') }}"><button>Return to Home</button></a>
+    </main>
+{% endblock %}

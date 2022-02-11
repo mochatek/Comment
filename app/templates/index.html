@@ -1,0 +1,46 @@
+{% extends 'template.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+        <div class="head">
+            <h2><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" /> Comment</h2>
+            <a href="{{ url_for('signout') }}"><i class="fas fa-user-lock"></i></a>
+        </div>
+
+        <form id="commentForm" method="post">
+            {{ form.csrf_token }}
+            {{ form.text(id='comment', rows='8', placeholder='What would you like to share with the world?') }}
+            <button id="post" type="submit"><i class="fas fa-plus"></i>&nbsp;Post</button>
+        </form>
+
+        <div class="timeline">
+            <div class="head">
+                <span><i class="fas fa-list-alt"></i>&nbsp;{{ "Others Comments" if comment_filter=='others' else 'My Comments' }}</span>
+                <span><button id="filter_button"><i class="fas fa-filter"></i>&nbsp;{{ "Filter Mine" if comment_filter=='others' else 'Filter Others' }}</button></span>
+            </div>
+
+            <div class="scrollable">
+                {% if comments|length %}
+                    {% set colors = ['FF4B40', '8ED8AA', '90D4F3', 'FEE954'] %}
+                <ul id="comments">
+                    {% for comment in comments %}
+                    <li class="{{ 'new' if loop.index == 1 and newPost else '' }}">
+                        <img src="https://placehold.jp/24/{{ colors[((loop.index-1) % comments|length) % 4] }}/ffffff/50x50.png?text={{ comment.user.email[0].upper() }}" alt="Profile" />
+                        <div><span>{{ comment.user.email }} <small>on {{ comment.on.strftime('%d-%m-%Y') }}</small></span>{{ comment.text }}</div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="error bg">No Comments!</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+
+{% endblock %}

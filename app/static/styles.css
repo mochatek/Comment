@@ -1,0 +1,281 @@
+:root {
+  --primary: hsl(197, 100%, 40%);
+  --secondary: hsl(199, 49%, 55%);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: hsla(0, 0%, 83%, 0.2);
+  width: 90%;
+}
+
+button {
+  color: white;
+  background-color: var(--primary);
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+button:hover,
+button:active {
+  background-color: var(--secondary);
+}
+
+input,
+textarea {
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  display: block;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--secondary);
+}
+
+h2 {
+  text-shadow: 1px 1px var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 > img {
+  width: 3rem;
+  height: auto;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+#authForm input,
+button {
+  margin-top: 1.5rem;
+}
+
+#commentForm {
+  display: flex;
+  margin: 0.5rem 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+#comments {
+  list-style: none;
+  padding: 0;
+}
+
+#post {
+  margin: 0;
+  width: 20%;
+  position: relative;
+}
+
+#post::before {
+  content: "";
+  position: absolute;
+  left: -1.9rem;
+  top: 0;
+  border: 0.98rem solid transparent;
+  border-right-color: var(--secondary);
+  border-top-color: var(--secondary);
+}
+
+#post::after {
+  content: "";
+  position: absolute;
+  right: -1.9rem;
+  top: 0;
+  border: 0.98rem solid transparent;
+  border-left-color: var(--secondary);
+  border-top-color: var(--secondary);
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  color: gray;
+  font-size: small;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  padding: 1.5rem;
+  box-shadow: 1px 1px 10px grey;
+}
+
+.auth > h2,
+p {
+  text-align: center;
+}
+
+.m0 {
+  margin: 0;
+  padding: 0;
+}
+
+p.error,
+p.message {
+  color: hsl(3, 86%, 59%);
+  font-size: smaller;
+  border-radius: 3px;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
+
+p.bg {
+  margin-top: 1rem;
+  padding: 0.25rem;
+  text-align: center;
+  background-color: hsl(46, 96%, 90%);
+}
+
+p.success {
+  color: hsl(130, 66%, 36%);
+  background-color: hsl(143, 49%, 90%);
+  font-size: smaller;
+  padding: 0.25rem;
+  border-radius: 3px;
+}
+
+.password {
+  border: 2px dotted var(--secondary);
+  background-color: hsla(0, 0%, 83%, 0.2);
+  color: grey;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.password i {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  opacity: 0.5;
+  z-index: -1;
+  font-size: 0.65rem;
+  letter-spacing: 0;
+}
+
+.head {
+  background-color: hsla(0, 0%, 83%, 0.2);
+  padding: 0.1rem 0;
+  box-shadow: 0px 15px 10px -15px grey;
+  position: relative;
+}
+
+.head a {
+  position: absolute;
+  right: 1.5rem;
+  top: 2rem;
+}
+
+.timeline {
+  margin: 1rem;
+  height: 50vh;
+}
+
+.timeline .head {
+  padding: 0.5rem 1rem;
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  color: var(--primary);
+}
+
+.timeline .head button {
+  margin-top: 0;
+}
+
+li {
+  padding: 0.5rem 1rem;
+  box-shadow: 0px 15px 10px -15px lightgrey;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  color: grey;
+  font-family: monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+li img {
+  width: 2rem;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+li span {
+  display: block;
+  font-size: smaller;
+  color: var(--primary);
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+li span small {
+  font-weight: lighter;
+}
+
+li.new::before {
+  content: "NEW";
+  position: absolute;
+  color: black;
+  background-color: rgb(240, 210, 44);
+  font-size: 10px;
+  padding: 0 0.35rem;
+  top: 2px;
+  left: -4px;
+  transform: rotate(-30deg);
+}
+
+.scrollable {
+  height: 90%;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 600px) {
+  .auth {
+    width: 75vw;
+  }
+}

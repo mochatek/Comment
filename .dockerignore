@@ -1,0 +1,10 @@
+__pycache__
+env
+migrations
+.flaskenv
+.git
+.gitignore
+.dockerignore
+*.pyc
+*.log
+*.db

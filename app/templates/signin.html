@@ -1,0 +1,35 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <main class="container center">
+        <div class="auth">
+            <h2><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" /> Sign In</h2>
+
+            <p class="info">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+
+            <form id="authForm"  method="post" autocomplete="off">
+                {{ form.csrf_token }}
+
+                {{ form.email(placeholder='Email') }}
+                {% for error in form.email.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+
+                {{ form.password(placeholder='Password') }}
+                {% for error in form.password.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <p class="{{ category }} bg">{{ message }}</p>
+                {% endfor %}
+                {% endwith %}
+
+                <p class="info"><a href="{{ url_for('forgotpassword') }}">Forgot your password?</a></p>
+
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </main>
+{% endblock %}
